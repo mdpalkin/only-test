@@ -5,12 +5,15 @@ import HtmlWebpackPlugin from 'html-webpack-plugin'
 import { buildLoaders } from './build-loaders'
 import { buildResolvers } from './build-resolvers'
 
+interface Env {
+	isWatchMode: boolean
+}
 
-export default (): Configuration | DevServerConfiguration => {
+export default (env: Env): Configuration | DevServerConfiguration => {
 	return {
 		mode: 'development',
     entry: path.resolve(__dirname, '../index.tsx'),
-    watch: true,
+    watch: env.isWatchMode,
     output: {
       path: path.resolve(__dirname, '../build'),
       filename: '[name].[contenthash].js',
