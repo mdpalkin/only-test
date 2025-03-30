@@ -6,14 +6,14 @@ import { buildLoaders } from './build-loaders'
 import { buildResolvers } from './build-resolvers'
 
 interface Env {
-	isWatchMode: boolean
+	mode: 'development' | 'production'
 }
 
 export default (env: Env): Configuration | DevServerConfiguration => {
 	return {
-		mode: 'development',
+		mode: env.mode,
     entry: path.resolve(__dirname, '../index.tsx'),
-    watch: env.isWatchMode,
+    watch: env.mode === 'development',
     output: {
       path: path.resolve(__dirname, '../build'),
       filename: '[name].[contenthash].js',
