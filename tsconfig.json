@@ -9,10 +9,16 @@
     "allowJs": true,
     "allowSyntheticDefaultImports": true,
     "esModuleInterop": true,
-    "baseUrl": ".",
+    "baseUrl": "./src", 
     "paths": {
-      "@/*": ["./src/*"]
-    }
+      "@/*": ["./*"],
+      "@/app/*": ["./app/*"],
+      "@/pages/*": ["./pages/*"],
+      "@/widgets/*": ["./widgets/*"],
+      "@/features/*": ["./features/*"],
+      "@/entities/*": ["./entities/*"],
+      "@/shared/*": ["./shared/*"]
+    },
   },
   "ts-node": {
     "compilerOptions": {

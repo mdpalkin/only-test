@@ -1,0 +1,14 @@
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=PT+Sans:wght@400;700&display=swap');
+
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	font-family: 'PT Sans', sans-serif;
+	--black-blue: rgba(66, 86, 122, 1);
+	--black-blue-middle: rgba(66, 86, 122, 0.2);
+	--black-blue-light: rgba(66, 86, 122, 0.1);
+	--blue: rgba(56, 119, 238, 1);
+	--pink: rgba(239, 93, 168, 1);
+	--gray-light: rgba(241, 242, 248, 1);
+}

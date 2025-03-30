@@ -12,41 +12,71 @@ export const buildLoaders = (): ModuleOptions => {
             syntax: 'typescript',
             tsx: true,
             decorators: true,
-            dynamicImport: true,
           },
           transform: {
             react: {
               runtime: 'automatic',
-              pragma: 'React.createElement',
-              pragmaFrag: 'React.Fragment',
-              throwIfNamespace: true,
               useBuiltins: true,
             },
           },
-          target: 'es2015',
-        },
-        module: {
-          type: 'es6',
+          target: 'es2022',
         },
       },
     },
   }
 
   const assetsLoader = {
-    test: /\.(png|jpg|jpeg|gif)$/i,
+    test: /\.(png|jpg|jpeg|gif|svg|webp)$/i,
     type: 'asset/resource',
+    generator: {
+      filename: 'assets/[hash][ext][query]'
+    }
+  }
+
+  const cssLoaderWithModules = {
+    loader: 'css-loader',
+    options: {
+      modules: {
+        auto: (path: string) => path.includes('.module.'),
+        localIdentName: '[name]__[local]--[hash:base64:5]',
+      },
+    },
   }
 
   const sassLoader = {
     test: /\.s[ca]ss$/i,
-    use: ['style-loader', 'css-loader', "sass-loader"],
+    use: [
+      'style-loader',
+      cssLoaderWithModules,
+      'sass-loader',
+    ],
+  }
+
+  const cssLoader = {
+    test: /\.css$/i,
+    use: ['style-loader', 'css-loader'],
+    exclude: /\.module\.css$/,
+  }
+
+  const fontsLoader = {
+    test: /\.(woff|woff2|eot|ttf|otf)$/i,
+    type: 'asset/resource',
+    generator: {
+      filename: 'fonts/[hash][ext][query]'
+    }
   }
 
   return {
     rules: [
       swcLoader,
       assetsLoader,
-      sassLoader,
+      fontsLoader,
+      {
+        oneOf: [
+          sassLoader,
+          cssLoader
+        ]
+      }
     ]
   }
 }
