@@ -27,7 +27,7 @@ export default (): Configuration | DevServerConfiguration => {
 		devServer: {
 			port: 3000,
 			historyApiFallback: true,
-			// open: true
+			open: true
 		}
 	}
 }
