@@ -31,6 +31,11 @@ export default (env: Env): Configuration | DevServerConfiguration => {
 			port: 3000,
 			historyApiFallback: true,
 			open: true
-		}
+		},
+		optimization: {
+      splitChunks: {
+        chunks: 'all',
+      },
+    },
 	}
 }
