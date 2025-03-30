@@ -33,5 +33,9 @@
     "react": "^19.1.0",
     "react-dom": "^19.1.0",
     "swiper": "^11.2.6"
-  }
+  },
+  "browserslist": {
+  "production": [">0.2%", "not dead", "not op_mini all"],
+  "development": ["last 1 chrome version"]
+}
 }
