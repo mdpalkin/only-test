@@ -26,7 +26,7 @@ export default (env: Env): Configuration | DevServerConfiguration => {
 		],
 		module: buildLoaders(),
 		resolve: buildResolvers(),
-		devtool: 'inline-source-map',
+		devtool: env.mode === 'development' ? 'inline-source-map' : false,
 		devServer: {
 			port: 3000,
 			historyApiFallback: true,
