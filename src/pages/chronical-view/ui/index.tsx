@@ -37,10 +37,8 @@ export const ChronicleView = () => {
   };
 
   const transitionDates = (index: number) => {
-    const newBegin = Number(TIMELINE_DATA[index].events[0].date);
-    const newFinish = Number(
-      TIMELINE_DATA[index].events[TIMELINE_DATA[index].events.length - 1].date
-    );
+    const newBegin = +TIMELINE_DATA[index].events[0].date;
+    const newFinish = +TIMELINE_DATA[index].events[TIMELINE_DATA[index].events.length - 1].date;
     const durationSec = (spinTime + 300) / 1000;
 
     const diffBegin = newBegin - beginDate;

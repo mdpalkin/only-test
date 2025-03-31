@@ -10,7 +10,7 @@ import 'swiper/css/navigation';
 import 'swiper/css';
 import './styles.scss';
 
-interface EventSliderProps {
+interface Props {
   sliderRef: RefObject<HTMLDivElement>;
   activeIdx: number;
   onSelect: (index: number) => void;
@@ -20,7 +20,7 @@ export const EventSlider = ({
   sliderRef,
   activeIdx,
   onSelect
-}: EventSliderProps) => {
+}: Props) => {
   const currentEvents = TIMELINE_DATA[activeIdx].events;
 
   const prevEvent = () => onSelect(activeIdx - 1);
@@ -40,7 +40,6 @@ export const EventSlider = ({
             }`}
             onClick={prevEvent}
             disabled={disablePrev}
-            aria-label="Previous event"
           />
           <button
             className={`control-buttons__default control-buttons__next ${
@@ -48,7 +47,6 @@ export const EventSlider = ({
             }`}
             onClick={nextEvent}
             disabled={disableNext}
-            aria-label="Next event"
           />
         </div>
       </div>
@@ -76,8 +74,8 @@ export const EventSlider = ({
             </SwiperSlide>
           ))}
         </Swiper>
-        <button className="slider__btn slider__btn_prev" aria-hidden="true" />
-        <button className="slider__btn slider__btn_next" aria-hidden="true" />
+        <button className="slider__btn slider__btn_prev" />
+        <button className="slider__btn slider__btn_next" />
       </div>
 
       <div className="events__control-buttons">
@@ -86,7 +84,6 @@ export const EventSlider = ({
             key={idx}
             className={`events__button ${activeIdx === idx ? 'events__button_active' : ''}`}
             onClick={() => onSelect(idx)}
-            aria-label={`Go to event ${idx + 1}`}
           />
         ))}
       </div>
