@@ -17,7 +17,7 @@ git clone https://github.com/mdpalkin/only-test.git
 2. ### Перейдите в папку с проектом
 
 ```
-cd historical date
+cd historical-date
 ```
 
 3. ### Установите зависимости
